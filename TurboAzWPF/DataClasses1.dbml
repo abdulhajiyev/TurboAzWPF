@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TurboAz" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=RAIDER\SQLEXPRESS;Initial Catalog=TurboAz;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False" SettingsObjectName="TurboAzWPF.Properties.Settings" SettingsPropertyName="TurboAzConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.BanTypes" Member="BanTypes">
+    <Type Name="BanType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cars" Member="Cars">
+    <Type Name="Car">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Year" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Engine" Type="System.Decimal" DbType="Decimal(3,1) NOT NULL" CanBeNull="false" />
+      <Column Name="Horsepower" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Fuel" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Range" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Transmission" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Drivetrain" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="IsNew" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PriceSymbol" Type="System.String" DbType="NVarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="CoverLink" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="MakeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModelId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ColorId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BanId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CityId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cities" Member="Cities">
+    <Type Name="City">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Colors" Member="Colors">
+    <Type Name="Color">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Makes" Member="Makes">
+    <Type Name="Make">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Make_Model" Member="Models" ThisKey="Id" OtherKey="MakeId" Type="Model" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Models" Member="Models">
+    <Type Name="Model">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="MakeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Make_Model" Member="Make" ThisKey="MakeId" OtherKey="Id" Type="Make" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
