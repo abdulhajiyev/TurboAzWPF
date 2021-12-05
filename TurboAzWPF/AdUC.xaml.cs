@@ -74,7 +74,7 @@ namespace TurboAzWPF
 
             var cty = dtx.Cars
                 .Join(dtx.Cities, Cars => new { Id = Convert.ToInt32(Cars.CityId) }, cities => new { Id = cities.Id },
-                    (Cars, Cities) => new { Cars, Cities })
+                    (cars, cities) => new { Cars = cars, Cities = cities })
                 .Where(t => t.Cars.Id == Ad.Id)
                 .Select(t => new { t.Cities.Name });
 

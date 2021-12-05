@@ -5,8 +5,6 @@
     xmlns:hc="[hc ]https://handyorg.github.io/handycontrol"
     xmlns:local="clr-namespace:TurboAzWPF"
     StartupUri="SearchWindow.xaml">
-
-
     <Application.Resources>
         <ResourceDictionary>
 
@@ -25,7 +23,6 @@
             <!--
             <SolidColorBrush x:Key="SecondaryAccentBrush" Color="#828282" />
             <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="Black" />-->
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>

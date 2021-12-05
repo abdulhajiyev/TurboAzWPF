@@ -87,7 +87,9 @@
                             Height="35"
                             materialDesign:HintAssist.Hint="Marka"
                             materialDesign:HintAssist.IsFloating="True"
-                            ItemsSource="{Binding Makes}"/>
+                            ItemsSource="{Binding Makes}"
+                            SelectedItem="{Binding MakeSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            SelectionChanged="ComboBox_SelectionChanged" />
                     </Grid>
                     <Grid Margin="15,10,15,15">
                         <ComboBox
