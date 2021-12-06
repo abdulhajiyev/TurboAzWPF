@@ -10,6 +10,7 @@ namespace TurboAzWPF
     public partial class MainWindow : Window
     {
         public ObservableCollection<AdUC> AdUCs { get; set; } = new ObservableCollection<AdUC>();
+        public ObservableCollection<AdUC> DefUCs { get; set; } = new ObservableCollection<AdUC>();
         public DataClasses1DataContext dtx { get; set; } = new DataClasses1DataContext();
         public GenericRepositoryPattern<Car> Repository = new GenericRepositoryPattern<Car>();
 
@@ -23,14 +24,14 @@ namespace TurboAzWPF
 
         private void QueryAllCars()
         {
-            Dispatcher.Invoke(() => AdUCs.Clear());
-
             var result = Repository.GetAll().ToList();
+            Dispatcher.Invoke(() => AdUCs.Clear());
 
             foreach (var car in result)
             {
                 var carAd = new AdUC(car) { Width = 229, Height = 246 };
                 Dispatcher.Invoke(() => AdUCs.Add(carAd));
+                Dispatcher.Invoke(() => DefUCs.Add(carAd));
             }
         }
 
@@ -42,6 +43,7 @@ namespace TurboAzWPF
             }
             var uc = new SearchWindow();
             uc.ShowDialog();
+
             AdUCs.Clear();
 
             var query = from cars in dtx.Cars
@@ -162,11 +164,9 @@ namespace TurboAzWPF
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Dispatcher.Invoke(QueryAllCars);
-
             if (!(sender is TextBox txt)) return;
             var text = txt.Text.ToLower();
-            var result = AdUCs.Where(p => p.MakeMod.ToLower().Contains(text)).ToList();
+            var result = DefUCs.Where(p => p.MakeMod.ToLower().Contains(text)).ToList();
 
             Dispatcher.Invoke(() => AdUCs.Clear());
 
