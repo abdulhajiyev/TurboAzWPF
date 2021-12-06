@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TurboAzWPF
+namespace TurboAzWPF.DataAccess.Context
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;

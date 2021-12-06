@@ -29,7 +29,7 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0">
                     <Label
-                        Margin="15,15,15,15"
+                        Margin="15,20,15,15"
                         FontFamily="Product Sans"
                         FontSize="14"
                         FontWeight="Bold">
@@ -50,20 +50,20 @@
                         Ban Novu
                     </Label>
                     <Label
-                        Margin="15,20,15,15"
+                        Margin="15,25,15,15"
                         FontFamily="Product Sans"
                         FontSize="14"
                         FontWeight="Bold">
                         Reng
                     </Label>
                     <Label
-                        Margin="15,17.9,15,15"
+                        Margin="15,15,15,15"
                         FontFamily="Product Sans"
                         FontSize="14"
                         FontWeight="Bold">
                         Yurus
                     </Label>
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
                         <Label
                             Margin="15"
                             VerticalAlignment="Center"
@@ -73,18 +73,17 @@
                             Qiymet
                         </Label>
                         <ComboBox
-                            Width="75"
-                            Height="35"
-                            Margin="15"
-                            VerticalAlignment="Center"
-                            Style="{StaticResource MaterialDesignOutlinedComboBox}" />
+                            Width="50"
+                            Height="30"
+                            ItemsSource="{Binding PriceTypes}"
+                            SelectedItem="{Binding SymbolSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Grid.Column="1">
                     <Grid Margin="15,10,15,15">
                         <ComboBox
                             Width="150"
-                            Height="35"
+                            Height="37"
                             materialDesign:HintAssist.Hint="Marka"
                             materialDesign:HintAssist.IsFloating="True"
                             ItemsSource="{Binding Makes}"
@@ -94,26 +93,29 @@
                     <Grid Margin="15,10,15,15">
                         <ComboBox
                             Width="150"
-                            Height="35"
+                            Height="37"
                             materialDesign:HintAssist.Hint="Model"
                             materialDesign:HintAssist.IsFloating="True"
-                            ItemsSource="{Binding Models}" />
+                            ItemsSource="{Binding Models}"
+                            SelectedItem="{Binding ModelSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </Grid>
                     <Grid Margin="15,10,15,15">
                         <ComboBox
                             Width="150"
-                            Height="35"
+                            Height="37"
                             materialDesign:HintAssist.Hint="Ban Novu"
                             materialDesign:HintAssist.IsFloating="True"
-                            ItemsSource="{Binding Bans}" />
+                            ItemsSource="{Binding Bans}"
+                            SelectedItem="{Binding BanSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </Grid>
                     <Grid Margin="15,10,15,15">
                         <ComboBox
                             Width="150"
-                            Height="36"
+                            Height="37"
                             materialDesign:HintAssist.Hint="Reng"
                             materialDesign:HintAssist.IsFloating="True"
-                            ItemsSource="{Binding Colors}" />
+                            ItemsSource="{Binding Colors}"
+                            SelectedItem="{Binding ColorSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </Grid>
                     <Grid Margin="15,10,15,15">
                         <StackPanel Orientation="Horizontal">
@@ -142,7 +144,7 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0">
                     <Label
-                        Margin="15,15,15,15"
+                        Margin="15,20,15,15"
                         FontFamily="Product Sans"
                         FontSize="14"
                         FontWeight="Bold">
@@ -163,21 +165,21 @@
                         Oturucu
                     </Label>
                     <Label
-                        Margin="15,20,15,15"
+                        Margin="15,25,15,15"
                         FontFamily="Product Sans"
                         FontSize="14"
                         FontWeight="Bold">
                         Suretler qutusu
                     </Label>
                     <Label
-                        Margin="15,17.9,15,15"
+                        Margin="15,15,15,15"
                         FontFamily="Product Sans"
                         FontSize="14"
                         FontWeight="Bold">
                         Buraxilis ili
                     </Label>
                     <Label
-                        Margin="15"
+                        Margin="15,25,15,0"
                         VerticalAlignment="Center"
                         FontFamily="Product Sans"
                         FontSize="14"
@@ -189,26 +191,38 @@
                     <Grid Margin="15,10,15,15">
                         <ComboBox
                             Width="150"
-                            Height="35"
-                            Style="{StaticResource MaterialDesignOutlinedComboBox}" />
+                            Height="37"
+                            materialDesign:HintAssist.Hint="Seher"
+                            materialDesign:HintAssist.IsFloating="True"
+                            ItemsSource="{Binding Cities}"
+                            SelectedItem="{Binding CitySelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </Grid>
                     <Grid Margin="15,10,15,15">
                         <ComboBox
                             Width="150"
-                            Height="35"
-                            Style="{StaticResource MaterialDesignOutlinedComboBox}" />
+                            Height="37"
+                            materialDesign:HintAssist.Hint="Yanacag novu"
+                            materialDesign:HintAssist.IsFloating="True"
+                            ItemsSource="{Binding FuelTypes}"
+                            SelectedItem="{Binding FuelSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </Grid>
                     <Grid Margin="15,10,15,15">
                         <ComboBox
                             Width="150"
-                            Height="35"
-                            Style="{StaticResource MaterialDesignOutlinedComboBox}" />
+                            Height="37"
+                            materialDesign:HintAssist.Hint="Oturucu"
+                            materialDesign:HintAssist.IsFloating="True"
+                            ItemsSource="{Binding Drivetrains}"
+                            SelectedItem="{Binding DrivetrainSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </Grid>
                     <Grid Margin="15,10,15,15">
                         <ComboBox
                             Width="150"
-                            Height="35"
-                            Style="{StaticResource MaterialDesignOutlinedComboBox}" />
+                            Height="37"
+                            materialDesign:HintAssist.Hint="Suretler qutusu"
+                            materialDesign:HintAssist.IsFloating="True"
+                            ItemsSource="{Binding Transmissions}"
+                            SelectedItem="{Binding TransmissionSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </Grid>
                     <Grid Margin="15,10,15,15" HorizontalAlignment="Center">
                         <StackPanel Orientation="Horizontal">
@@ -221,9 +235,15 @@
                     <Grid Margin="15,25,15,15" HorizontalAlignment="Center">
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Min." />
-                            <ComboBox Width="50" ItemsSource="{Binding Engines}" />
+                            <ComboBox
+                                Width="50"
+                                ItemsSource="{Binding Engines}"
+                                SelectedItem="{Binding EngMin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                             <Label Content="Max." />
-                            <ComboBox Width="50" ItemsSource="{Binding Engines}" />
+                            <ComboBox
+                                Width="50"
+                                ItemsSource="{Binding Engines}"
+                                SelectedItem="{Binding EngMax, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         </StackPanel>
                     </Grid>
                 </StackPanel>
@@ -239,6 +259,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 materialDesign:ButtonAssist.CornerRadius="5"
+                Click="Button_Click"
                 Content="Axtar" />
         </Viewbox>
 
