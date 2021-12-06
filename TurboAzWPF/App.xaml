@@ -11,19 +11,9 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Red.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Red.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <!--  PRIMARY  -->
-            <!--
-            <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#ca1016" />
-            <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="#828282" />
-            -->
-            <!--  ACCENT  -->
-            <!--
-            <SolidColorBrush x:Key="SecondaryAccentBrush" Color="#828282" />
-            <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="Black" />-->
         </ResourceDictionary>
     </Application.Resources>
 </Application>

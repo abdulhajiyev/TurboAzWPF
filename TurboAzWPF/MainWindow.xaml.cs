@@ -1,25 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using TurboAzWPF.DataAccess.Concrete;
 using TurboAzWPF.DataAccess.Context;
 
 namespace TurboAzWPF
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public ObservableCollection<AdUC> AdUCs { get; set; } = new ObservableCollection<AdUC>();
         public DataClasses1DataContext dtx { get; set; } = new DataClasses1DataContext();
-
         public GenericRepositoryPattern<Car> Repository = new GenericRepositoryPattern<Car>();
-        //public ObservableCollection<Car> Data { get; set; }
 
         public MainWindow()
         {
@@ -35,22 +27,19 @@ namespace TurboAzWPF
 
             var result = Repository.GetAll().ToList();
 
-            //AdUCs.Clear();
             foreach (var car in result)
             {
                 var carAd = new AdUC(car) { Width = 229, Height = 246 };
                 Dispatcher.Invoke(() => AdUCs.Add(carAd));
-                //AdUCs.Add(carAd);
             }
-        }
-
-        private void scroll_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            MessageBox.Show("yaay");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (SearchTxt.Text != "")
+            {
+                SearchTxt.Text = "";
+            }
             var uc = new SearchWindow();
             uc.ShowDialog();
             AdUCs.Clear();
@@ -125,6 +114,36 @@ namespace TurboAzWPF
                 query = query.Where(q => q.Cars.Engine <= uc.EngMax);
             }
 
+            if (uc.YearMin != 0)
+            {
+                query = query.Where(q => q.Cars.Year >= uc.YearMin);
+            }
+
+            if (uc.YearMax != 0)
+            {
+                query = query.Where(q => q.Cars.Year <= uc.YearMax);
+            }
+
+            if (uc.MinRangeText == "0")
+            {
+                query = query.Where(q => q.Cars.Range >= int.Parse(uc.MinRangeText));
+            }
+
+            if (uc.MaxRangeText == "0")
+            {
+                query = query.Where(q => q.Cars.Range <= int.Parse(uc.MaxRangeText));
+            }
+
+            if (uc.MinPriceText != 0)
+            {
+                query = query.Where(q => q.Cars.Price >= uc.MinPriceText);
+            }
+
+            if (uc.MaxPriceText != 0)
+            {
+                query = query.Where(q => q.Cars.Price <= uc.MaxPriceText);
+            }
+
             if (query.Any() != true)
             {
                 MessageBox.Show("Bağışlayın, göndərdiyiniz sorğu üzrə heç bir nəticə tapılmamışdır.\nDigər meyarlar üzrə axtarışa cəhd edin.");
@@ -138,8 +157,6 @@ namespace TurboAzWPF
                     AdUCs.Add(carAd);
                 }
             }
-
-
 
         }
 

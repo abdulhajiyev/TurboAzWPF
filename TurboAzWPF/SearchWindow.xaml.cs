@@ -10,9 +10,6 @@ using TurboAzWPF.DataAccess.Context;
 
 namespace TurboAzWPF
 {
-    /// <summary>
-    /// Interaction logic for SearchWindow.xaml
-    /// </summary>
     public partial class SearchWindow : Window, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -35,7 +32,7 @@ namespace TurboAzWPF
         public ObservableCollection<string> Transmissions { get; set; }
         public ObservableCollection<string> Engines { get; set; }
         public ObservableCollection<string> PriceTypes { get; set; }
-
+        public ObservableCollection<string> Years { get; set; }
 
         private string _makeSelected;
         public string MakeSelected
@@ -63,6 +60,34 @@ namespace TurboAzWPF
         {
             get => _colorSelected;
             set { _colorSelected = value; OnPropertyChanged(); }
+        }
+
+        private string _minRangeText;
+        public string MinRangeText
+        {
+            get => _minRangeText;
+            set { _minRangeText = value; OnPropertyChanged(); }
+        }
+
+        private string _maxRangeText;
+        public string MaxRangeText
+        {
+            get => _maxRangeText;
+            set { _maxRangeText = value; OnPropertyChanged(); }
+        }
+
+        private int _minPriceText;
+        public int MinPriceText
+        {
+            get => _minPriceText;
+            set { _minPriceText = value; OnPropertyChanged(); }
+        }
+
+        private int _maxPriceText;
+        public int MaxPriceText
+        {
+            get => _maxPriceText;
+            set { _maxPriceText = value; OnPropertyChanged(); }
         }
 
         private string _symbolSelected;
@@ -114,11 +139,19 @@ namespace TurboAzWPF
             set { _engMax = value; OnPropertyChanged(); }
         }
 
+        private int _yearMin;
+        public int YearMin
+        {
+            get => _yearMin;
+            set { _yearMin = value; OnPropertyChanged(); }
+        }
 
-
-
-
-
+        private int _yearMax;
+        public int YearMax
+        {
+            get => _yearMax;
+            set { _yearMax = value; OnPropertyChanged(); }
+        }
 
         public SearchWindow()
         {
@@ -138,6 +171,7 @@ namespace TurboAzWPF
             Transmissions = new ObservableCollection<string>();
             Engines = new ObservableCollection<string>();
             PriceTypes = new ObservableCollection<string>();
+            Years = new ObservableCollection<string>();
             #endregion
 
             #region Makes
@@ -210,6 +244,15 @@ namespace TurboAzWPF
             {
                 Transmissions.Add(transmission.Transmission);
             }
+            #endregion
+
+            #region Years
+            var years = dtx.Cars.Select(cars => cars.Year).Distinct();
+            foreach (var year in years)
+            {
+                Years.Add(year.ToString());
+            }
+
             #endregion
 
             #region Engines

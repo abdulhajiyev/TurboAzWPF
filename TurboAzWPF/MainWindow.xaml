@@ -31,6 +31,7 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <TextBox
+                    Name="SearchTxt"
                     Grid.Column="0"
                     Margin="35,10,35,10"
                     VerticalAlignment="Center"
@@ -68,17 +69,15 @@
         </Border>
         <Grid Grid.Row="1" Margin="35,0,35,0">
             <ListBox
-                Name="scroll"
                 Background="#fafafa"
                 BorderBrush="{x:Null}"
                 BorderThickness="0"
                 Foreground="{x:Null}"
                 ItemsSource="{Binding AdUCs, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                MouseDoubleClick="scroll_MouseDoubleClick"
                 ScrollViewer.CanContentScroll="False"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                 ScrollViewer.VerticalScrollBarVisibility="Visible">
-                <ListBox.ItemsPanel>
+                <ListBox.ItemsPanel >
                     <ItemsPanelTemplate>
                         <WrapPanel />
                     </ItemsPanelTemplate>

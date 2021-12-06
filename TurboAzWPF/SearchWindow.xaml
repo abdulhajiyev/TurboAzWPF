@@ -120,17 +120,17 @@
                     <Grid Margin="15,10,15,15">
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Min." />
-                            <TextBox Width="50" />
+                            <TextBox Width="50" Text="{Binding MinRangeText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                             <Label Content="Max." />
-                            <TextBox Width="50" />
+                            <TextBox Width="50" Text="{Binding MaxRangeText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         </StackPanel>
                     </Grid>
                     <Grid Margin="15,25,15,15">
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Min." />
-                            <TextBox Width="50" />
+                            <TextBox Width="50" Text="{Binding MinPriceText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                             <Label Content="Max." />
-                            <TextBox Width="50" />
+                            <TextBox Width="50" Text="{Binding MaxPriceText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         </StackPanel>
                     </Grid>
                 </StackPanel>
@@ -227,9 +227,15 @@
                     <Grid Margin="15,10,15,15" HorizontalAlignment="Center">
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Min." />
-                            <TextBox Width="50" />
+                            <ComboBox
+                                Width="50"
+                                ItemsSource="{Binding Years}"
+                                SelectedItem="{Binding YearMin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                             <Label Content="Max." />
-                            <TextBox Width="50" />
+                            <ComboBox
+                                Width="50"
+                                ItemsSource="{Binding Years}"
+                                SelectedItem="{Binding YearMax, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         </StackPanel>
                     </Grid>
                     <Grid Margin="15,25,15,15" HorizontalAlignment="Center">
